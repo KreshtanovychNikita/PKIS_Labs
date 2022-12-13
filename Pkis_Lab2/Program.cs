@@ -12,7 +12,7 @@ internal class Program
         var optionBuilder = new DbContextOptionsBuilder<DbConnection>();
         var libraryGoodsDB = new DbConnection(optionBuilder.UseSqlServer(conf.GetConnectionString("CompanyGoods")).Options);
 
-        var res = companyDB.CompanyOutOfStorage.Include(x => x.Person).Include(x=>x.Company.Goods).Include(x=>x.Person).Include(x=>x.Goods).ToList();
+        var res = companyDB.Company.Include(x => x.Person).Include(x=>x.Company.Goods).Include(x=>x.Person).Include(x=>x.Goods).ToList();
         foreach (var item in res)
         {
             Console.WriteLine($"" +
